@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetLinkfy URL Shortener</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Clipboard.js untuk fungsi copy dipanggil di sini -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+  </head>
+  <body>
+    <!-- Header: Logo dan navigasi -->
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <h1>GetLinkfy</h1>
+        </div>
+        <nav class="header-nav">
+          <a href="login.html" class="btn btn-nav">Login</a>
+          <a href="register.html" class="btn btn-nav btn-outline">Register</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+      <section class="hero">
+        <h2>Shorten Your URLs Instantly</h2>
+        <p>Enter a long URL and get a short, easy-to-share link – powered by smart technology.</p>
+      </section>
+      <section class="shortener-container">
+        <form id="shortenForm" class="shortener-form">
+          <input type="url" id="inputUrl" name="url" placeholder="Enter your URL here" required>
+          <div class="domain-alias-container">
+            <div class="domain">
+              <label for="domainSelect">Select Domain:</label>
+              <select id="domainSelect" name="domain">
+                <option value="getlinkfy.com">getlinkfy.com</option>
+                <option value="short.getlinkfy.com">short.getlinkfy.com</option>
+              </select>
+            </div>
+            <div class="alias">
+              <label for="inputAlias">Custom alias (optional):</label>
+              <input type="text" id="inputAlias" name="alias" placeholder="Custom alias (optional)">
+            </div>
+          </div>
+          <button type="submit" class="btn">Shorten</button>
+          <div id="resultSection" class="result-section hidden">
+            <input type="text" id="shortUrlOutput" readonly>
+            <button type="button" id="copyButton" data-clipboard-target="#shortUrlOutput" class="btn">Copy</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    
+    <!-- Pastikan DOM sudah siap sebelum menjalankan skrip kustom -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Event listener untuk submit form
+        document.getElementById("shortenForm").addEventListener("submit", function(e) {
+          e.preventDefault();
+          const url = document.getElementById("inputUrl").value;
+          const domain = document.getElementById("domainSelect").value;
+          const alias = document.getElementById("inputAlias").value.trim();
+          const shortCode = alias !== "" ? alias : Math.random().toString(36).substring(2, 8);
+          const shortUrl = "https://" + domain + "/" + shortCode;
+          document.getElementById("shortUrlOutput").value = shortUrl;
+          document.getElementById("resultSection").classList.remove("hidden");
+        });
+
+        // Inisialisasi ClipboardJS setelah DOM siap
+        new ClipboardJS("#copyButton");
+      });
+    </script>
+    
+    <footer>
+  <div class="footer-container">
+    <p class="footer-text">2025 GetLinkfy. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="terms.html" class="footer-link">Terms</a>
+      <a href="about.html" class="footer-link">About</a>
+      <a href="privacy.html" class="footer-link">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
