@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - GetLinkfy</title>
+    <link rel="stylesheet" href="css/global.css" />
+  </head>
+  <body>
+    <!-- Header Tetap -->
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <h1>GetLinkfy</h1>
+        </div>
+        <nav class="header-nav">
+          <!-- Tampilkan link Login jika sudah punya akun -->
+          <a href="login.html" class="btn btn-nav">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Container Halaman Registrasi -->
+    <div class="register-container">
+           <div class="login-illustration">
+        <img src="images/sapi.jpg" alt="Illustration" />
+        <div class="illustration-text">
+          <h3>What is a Short URL?</h3>
+          <p>
+            A short URL is a compact version of a long hyperlink that makes sharing easy and efficient. In just one click, you can redirect users to the intended destination.
+          </p>
+          <h3>About GetLinkfy</h3>
+          <p>
+            GetLinkfy is a cutting-edge URL shortening service designed for simplicity and efficiency. Transform any long, cumbersome link into a sleek, memorable short URL that’s perfect for social media, email, or any digital platform. Join our community and experience the power of smart link management!
+          </p>
+        </div>
+      </div>
+      <!-- Bagian Form Registrasi (sisi kanan) -->
+      <div class="register-form-container">
+        <form action="/register" method="POST" class="register-form">
+          <h2>Register</h2>
+          <!-- Username -->
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          </div>
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <!-- Verifikasi Kode Email -->
+          <div class="form-group email-verification">
+            <label for="emailVerification">Email Verification Code</label>
+            <div class="verification-container">
+              <input type="text" id="emailVerification" name="emailVerification" placeholder="Enter verification code" required>
+              <button type="button" id="sendVerification" class="btn-verification">Send Code</button>
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+          </div>
+          <button type="submit" class="btn">Register</button>
+          <!-- Tautan ke halaman Login -->
+          <p class="redirect-info">Already have an account? <a href="login.html">Login here</a>.</p>
+        </form>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footer-container">
+        <p class="footer-text">2025 GetLinkfy. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="terms.html" class="footer-link">Terms</a>
+          <a href="about.html" class="footer-link">About</a>
+          <a href="privacy.html" class="footer-link">Privacy</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+<script>
+  document.getElementById("sendVerification").addEventListener("click", function() {
+    alert("Verification code sent!");
+  });
+</script>
